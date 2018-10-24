@@ -1,0 +1,26 @@
+{
+  "appenders": [
+    {
+      "type": "console"
+    },
+    {
+      "type": "dateFile",
+      "filename": "logs/server.log",
+      "pattern": "_yyyy-MM-dd",
+      "maxLogSize": 1024,
+      "alwaysIncludePattern": false,
+      "backups": 10,
+      "category": "logger"
+    },
+    {
+      "type": "dateFile",
+      "filename": "logs/error.log",
+      "pattern": "_yyyy-MM-dd",
+      "maxLogSize": 1024,
+      "alwaysIncludePattern": false,
+      "backups": 10,
+      "category": "error"
+    }
+  ],
+  "replaceConsole": true
+}

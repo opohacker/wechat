@@ -1,0 +1,22 @@
+{
+  "name": "webim",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js",
+    "build": "webpack && webpack --config webpack.config.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.1",
+    "co": "^4.6.0",
+    "express": "^4.15.3",
+    "log4js": "0.6.38",
+    "request": "^2.83.0",
+    "save": "^2.3.2",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {}
+}
