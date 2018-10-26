@@ -2,8 +2,8 @@ var http = require('http');
 var express = require('express');
 var app = express();
 
-app.use('/api/', require('./src/api/apiCtr'));
-app.use('/', express.static(__dirname + '/src/static'));
+app.use('/api/', require('./src/controller/apiCtr'));
+app.use('/', express.static(__dirname + '/static'));
 
 var server = http.createServer(app);
 
