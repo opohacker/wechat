@@ -1,0 +1,34 @@
+{
+  "button": [
+    {
+      "type": "view",
+      "name": "个人信息",
+      "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa51f7006741786ca&redirect_uri=http%3a%2f%2f2954ab61.ngrok.io%2fmyInfo.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
+    },
+    {
+      "type": "click",
+      "name": "分享资料",
+      "key": "today_recommend"
+    },
+    {
+      "name": "小工具",
+      "sub_button": [
+        {
+          "type": "scancode_waitmsg",
+          "name": "扫一扫",
+          "key": "scancode"
+        },
+        {
+          "type": "pic_weixin",
+          "name": "系统发图",
+          "key": "take_photo"
+        },
+        {
+          "type": "location_select",
+          "name": "发送位置",
+          "key": "send_location"
+        }
+      ]
+    }
+  ]
+}

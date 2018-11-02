@@ -1,0 +1,123 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>公众号分享-抽奖</title>
+
+<style>
+*{padding:0; margin:0;}
+body{
+background:url('img/bg.jpg') no-repeat;
+background-size:cover;
+}
+.container{width:400px; height:200; position:fixed; top:50%; left:50%; margin:-100px 0 0 -200px; text-align:center; }
+.result-box{ background-color:#fff; text-align:center; line-height:60px; font-size:34px;margin: 10px 0}
+.hidden{display: none}
+.imgStyle{width: 60px;border-radius: 50%}
+.imgWrapper{padding-top:10px}
+button{ width:200px; height:50px; line-height:50px; margin-top:30px; border:none; color:#fff; font-size:24px;}
+button:focus{outline:none;}
+.start{ background-color:#428bca;}
+.end{ background-color:#d9534f;}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+	<div class="result-box" id="result1">
+		??????????
+	</div>
+    <div class="result-box hidden" id="result2">
+        ??????????
+    </div>
+    <div class="result-box hidden" id="result3">
+        ??????????
+    </div>
+	<button class="start" onClick="start()">开始抽奖</button>
+</div>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript">
+	var data=[];//参与人员
+	var users={}
+    var userCoumt=0
+    var p1Num=3; //一等奖数量
+	var p1Winner=[]; //一等奖中奖者
+	var btn=true; //按钮状态未开始还是结束
+	var key=0; //中奖下标
+	var time=0; //定时器
+    var runIndex=1;
+	function runTime(){
+		clearInterval(time);
+		time=setInterval('trunNum()',50);
+	}
+
+	//点击按钮
+	function start(){
+      $("button").hide();
+      runTime();
+      setTimeout(function() {
+        clearInterval(time);
+        p1Winner.push(users[key].openid)
+        $("#result"+runIndex).prepend('<div class="imgWrapper"><img class="imgStyle" src="'+users[key].headimgurl+'"></div>')
+        $('#result2').slideDown('fast',function() {
+          runIndex=2;
+          runTime();
+          setTimeout(function() {
+            clearInterval(time);
+            p1Winner.push(users[key].openid)
+            $("#result"+runIndex).prepend('<div class="imgWrapper"><img class="imgStyle" src="'+users[key].headimgurl+'"></div>')
+            $('#result3').slideDown('fast',function() {
+              runIndex=3;
+              runTime();
+              setTimeout(function() {
+                clearInterval(time);
+                p1Winner.push(users[key].openid)
+                $("#result"+runIndex).prepend('<div class="imgWrapper"><img class="imgStyle" src="'+users[key].headimgurl+'"></div>')
+                console.log(p1Winner)
+                sendLotteryMessage();
+              },2000)
+            })
+          },2000)
+        })
+          },3000)
+	}
+
+	function trunNum(){
+		key=Math.floor(Math.random()*(userCoumt-1));
+		console.log(Math.random())
+        console.log(Math.random()*(userCoumt-1))
+		var tel=users[key].nickname
+		$("#result"+runIndex).text(tel);
+	}
+
+    var initUsers = function(res) {
+      for(var i=0;i<res.length;i++){
+        users[i]=res[i];
+      }
+      userCoumt=res.length
+      console.log(users)
+    };
+    var sendLotteryMessage = function() {
+      $.ajax({
+        url: '/api/sendLotteryMessage', type: 'POST', data:{openIds:p1Winner}, success: function(res) {
+        },
+      });
+    };
+    var getSubscribeUsers = function() {
+      $.ajax({
+        url: '/api/getSubscribeUsers', type: 'GET',  success: function(res) {
+          initUsers(res)
+        },
+      });
+    };
+    var init = function() {
+      getSubscribeUsers();
+    };
+    init();
+</script>
+
+<div style="text-align:center;margin:50px 0; font:normal 14px/24px 'MicroSoft YaHei';"><br><br><br>
+</div>
+</body>
+</html>
+

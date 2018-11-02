@@ -8,5 +8,5 @@ app.use('/', express.static(__dirname + '/static'));
 var server = http.createServer(app);
 
 server.listen(9091, function() {
-  console.log('http://localhost:9091/api/');
+  console.log('http://localhost:9091/');
 });
