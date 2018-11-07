@@ -90,6 +90,7 @@ var handleMsg = function(req, res) {
               var content = '欢迎关注 科达园区-公众号开发分享，回复以下数字获得相关资讯：\n';
               content += '1.关于公司\n';
               content += '2.关于这次分享\n';
+              content += '3.图文推送\n';
               reportMsg = msg.txtMsg(fromUser, toUser, content);
               break;
             case 'location_select':
@@ -117,22 +118,22 @@ var handleMsg = function(req, res) {
             case 'click':
               var contentArr = [
                 {
-                  Title: '分享文档',
-                  Description: '微信公众号-分享文档',
-                  PicUrl: 'https://wiki.kedacom.com/pages/viewpage.action?pageId=31951379',
+                  Title: '科达云办公平台',
+                  Description: '微信公众号-科达云办公平台',
+                  PicUrl: 'https://sso.kedacom.com:8443/CasServer/themes/20181008/images/bg.jpg',
                   Url: 'https://wiki.kedacom.com/pages/viewpage.action?pageId=31951379',
                 },
                 {
-                  Title: '分享文档2',
-                  Description: '微信公众号-分享文档2',
-                  PicUrl: 'https://www.kedacom.com/r/cms/www/kedacom/images/logo_blue.png',
-                  Url: 'https://wiki.kedacom.com/pages/viewpage.action?pageId=31951379',
+                  Title: '品牌介绍',
+                  Description: '微信公众号-品牌介绍',
+                  PicUrl: 'http://www.movision.com.cn/u/cms/www/201804/23191413w4d7.png',
+                  Url: 'http://www.movision.com.cn/ppjs/index.jhtml',
                 },
                 {
-                  Title: '分享文档2',
-                  Description: '微信公众号-分享文档3',
-                  PicUrl: 'www.kedacom.com/r/cms/www/kedacom/images/temp/solution_yl_hover.png',
-                  Url: 'https://wiki.kedacom.com/pages/viewpage.action?pageId=31951379',
+                  Title: '新闻动态',
+                  Description: '微信公众号-新闻动态',
+                  PicUrl: 'http://www.movision.com.cn/u/cms/www/201804/23191352mi6k.png',
+                  Url: 'http://www.movision.com.cn/news/index.jhtml',
                 }
               ];
               //回复图文消息
@@ -145,32 +146,20 @@ var handleMsg = function(req, res) {
             //根据消息内容返回消息信息
             switch (result.Content) {
               case '1':
-                reportMsg = msg.txtMsg(fromUser, toUser, 'Hello ！科达');
+                reportMsg = msg.txtMsg(fromUser, toUser, '科达,引领视讯与安防！');
                 break;
               case '2':
                 reportMsg = msg.txtMsg(fromUser, toUser,
-                    'Node.js是一个开放源代码、跨平台的JavaScript语言运行环境，采用Google开发的V8运行代码,使用事件驱动、非阻塞和异步输入输出模型等技术来提高性能，可优化应用程序的传输量和规模。这些技术通常用于数据密集的事实应用程序');
+                    '本次分享，将抽出三名幸运听众，获得特别大奖。');
                 break;
-              case '文章':
+              case '3':
                 var contentArr = [
                   {
-                    Title: '分享文档',
-                    Description: '微信公众号-分享文档',
-                    PicUrl: 'https://www.kedacom.com/r/cms/www/kedacom/images/logo_blue.png',
+                    Title: '科达云办公平台',
+                    Description: '微信公众号-科达云办公平台',
+                    PicUrl: 'https://sso.kedacom.com:8443/CasServer/themes/20181008/images/bg.jpg',
                     Url: 'https://wiki.kedacom.com/pages/viewpage.action?pageId=31951379',
-                  },
-                  {
-                    Title: '分享文档2',
-                    Description: '微信公众号-分享文档2',
-                    PicUrl: 'www.kedacom.com/r/cms/www/kedacom/images/temp/solution_jy_hover.png',
-                    Url: 'https://wiki.kedacom.com/pages/viewpage.action?pageId=31951379',
-                  },
-                  {
-                    Title: '分享文档2',
-                    Description: '微信公众号-分享文档3',
-                    PicUrl: 'www.kedacom.com/r/cms/www/kedacom/images/temp/solution_yl_hover.png',
-                    Url: 'https://wiki.kedacom.com/pages/viewpage.action?pageId=31951379',
-                  },
+                  }
                 ];
                 //回复图文消息
                 reportMsg = msg.graphicMsg(fromUser, toUser, contentArr);

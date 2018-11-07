@@ -3,11 +3,11 @@
     {
       "type": "view",
       "name": "个人信息",
-      "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa51f7006741786ca&redirect_uri=http%3a%2f%2f2954ab61.ngrok.io%2fmyInfo.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
+      "url": "https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxa51f7006741786ca&redirect_uri=http%3a%2f%2fba52858b.ngrok.io%2fmyInfo.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect"
     },
     {
       "type": "click",
-      "name": "分享资料",
+      "name": "办公平台",
       "key": "today_recommend"
     },
     {
